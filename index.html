@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,88 +8,177 @@
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#e67e22">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; color: #333; }
-    header { background: #2c3e50; color: white; padding: 15px; text-align: center; }
-    .day-tabs { display: flex; justify-content: center; background: #34495e; flex-wrap: wrap; }
-    .day-tabs button { padding: 10px 20px; border: none; margin: 2px; border-radius: 6px; background: #7f8c8d; color: white; cursor: pointer; }
-    .day-tabs button.active { background: #e67e22; }
-    .tab-container { display: flex; justify-content: center; flex-wrap: wrap; background: #ecf0f1; }
-    .tab-container button { padding: 8px 15px; border: none; background: #bdc3c7; cursor: pointer; margin: 2px; border-radius: 6px; }
-    .tab-container button.active { background: #3498db; color: white; }
-    .tab-content { display: none; padding: 20px; text-align: center; background: white; }
-    .tab-content img { max-width: 300px; width: 100%; border-radius: 8px; margin-bottom: 15px; }
-    .exercise-info { margin-bottom: 10px; }
-    .next-btn { margin-top: 20px; padding: 10px 20px; background: #27ae60; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .day-tabs {
+      display: flex;
+      justify-content: center;
+      background: #34495e;
+      flex-wrap: wrap;
+    }
+
+    .day-tabs button {
+      padding: 10px 20px;
+      border: none;
+      margin: 2px;
+      border-radius: 6px;
+      background: #7f8c8d;
+      color: white;
+      cursor: pointer;
+    }
+
+    .day-tabs button.active {
+      background: #e67e22;
+    }
+
+    .tab-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background: #ecf0f1;
+    }
+
+    .tab-container button {
+      padding: 8px 15px;
+      border: none;
+      background: #bdc3c7;
+      cursor: pointer;
+      margin: 2px;
+      border-radius: 6px;
+    }
+
+    .tab-container button.active {
+      background: #3498db;
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 20px;
+      text-align: center;
+      background: white;
+    }
+
+    .tab-content img {
+      max-width: 300px;
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .exercise-info {
+      margin-bottom: 10px;
+    }
+
+    .next-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
   </style>
 </head>
+
 <body>
 
-<header>
-  <h1>Guia Diário de Treino</h1>
-  <p>Dia 1: Peito/Tríceps | Dia 2: Pernas | Dia 3: Costas/Bíceps/Ombros</p>
-</header>
+  <header>
+    <h1>Guia Diário de Treino</h1>
+    <p>Dia 1: Peito/Tríceps | Dia 2: Pernas | Dia 3: Costas/Bíceps/Ombros</p>
+    <p>
+      <a href="treino_feminino.html" style="color: #f06292; text-decoration: none; font-weight: bold;">Ver Treino
+        Feminino Iniciante</a> |
+      <a href="treino_barra.html" style="color: #e67e22; text-decoration: none; font-weight: bold;">Ver Treino com
+        Barra</a>
+    </p>
+    <div style="margin-top: 10px; padding: 10px; background: #34495e; border-radius: 8px;">
+      <p style="margin: 0; color: #bdc3c7; font-size: 0.9em; margin-bottom: 5px;">Treinos por Grupo Muscular:</p>
+      <a href="treino_chest.html" style="color: #3498db; text-decoration: none; margin: 0 5px;">Peito</a> |
+      <a href="treino_back.html" style="color: #3498db; text-decoration: none; margin: 0 5px;">Costas</a> |
+      <a href="treino_shoulders.html" style="color: #3498db; text-decoration: none; margin: 0 5px;">Ombros</a> |
+      <a href="treino_legs.html" style="color: #3498db; text-decoration: none; margin: 0 5px;">Pernas</a> |
+      <a href="treino_biceps.html" style="color: #3498db; text-decoration: none; margin: 0 5px;">Bíceps</a> |
+      <a href="treino_triceps.html" style="color: #3498db; text-decoration: none; margin: 0 5px;">Tríceps</a> |
+      <a href="treino_abs.html" style="color: #3498db; text-decoration: none; margin: 0 5px;">Abdômen</a>
+    </div>
+  </header>
 
-<div class="day-tabs" id="dayTabs"></div>
-<div id="dayContent"></div>
+  <div class="day-tabs" id="dayTabs"></div>
+  <div id="dayContent"></div>
 
-<script>
-  const dias = [
-    {
-      nome: "Dia 1 - Peito e Tríceps",
-      exercicios: [
-        {nome: "Supino Inclinado com Barra", series: "4x12", intervalo: "30-60s", img: "imagens/supino-inclinado-barra.gif", link: "https://www.hipertrofia.org/blog/2018/08/11/supino-inclinado/"},
-        {nome: "Supino Inclinado", series: "4x12", intervalo: "30-60s", img: "imagens/supino-inclinado.gif", link: "https://www.hipertrofia.org/blog/2018/08/11/supino-inclinado/"},
-        {nome: "Crucifixo e Peck Deck", series: "4x13", intervalo: "30-60s", img: "imagens/crucifixo-peck.gif", link: "https://www.hipertrofia.org/blog/2025/03/11/crucifixo-ou-peck-deck/"},
-        {nome: "Tríceps Pulley", series: "4x12", intervalo: "30-60s", img: "imagens/triceps-pulley.gif", link: "https://www.hipertrofia.org/blog/?s=Tr%C3%ADceps+Pulley"},
-        {nome: "Tríceps Inverso", series: "4x12", intervalo: "30-60s", img: "imagens/triceps-invertido.gif", link: "https://www.hipertrofia.org/blog/exercicios-de-musculacao/exercicios-para-triceps/"},
-        {nome: "Tríceps Coice", series: "4x12", intervalo: "30-60s", img: "imagens/triceps-coice.gif", link: "https://www.hipertrofia.org/blog/exercicios-de-musculacao/exercicios-para-triceps/"}
-      ]
-    },
-    {
-      nome: "Dia 2 - Pernas",
-      exercicios: [
-        {nome: "Agachamento Peso Corporal", series: "4x12", intervalo: "30-60s", img: "imagens/agachamento.jpg"},
-        {nome: "Leg Press 30°", series: "4x12", intervalo: "30-60s", img: "imagens/legpress.jpg"},
-        {nome: "Cadeira Extensora", series: "4x12", intervalo: "30-60s", img: "imagens/extensora.jpg"},
-        {nome: "Mesa Flexora", series: "4x12", intervalo: "30-60s", img: "imagens/flexora.jpg"}
-      ]
-    },
-    {
-      nome: "Dia 3 - Costas, Bíceps e Ombros",
-      exercicios: [
-        {nome: "Puxada Alta Supinada", series: "4x12", intervalo: "30-60s", img: "imagens/puxada.jpg"},
-        {nome: "Remada Baixa Triângulo", series: "4x12", intervalo: "30-60s", img: "imagens/remada.jpg"},
-        {nome: "Rosca Direta", series: "4x12", intervalo: "30-60s", img: "imagens/rosca.jpg"},
-        {nome: "Elevação Lateral", series: "4x12", intervalo: "30-60s", img: "imagens/elevacao_lateral.jpg"}
-      ]
-    }
-  ];
+  <script>
+    const dias = [
+      {
+        nome: "Dia 1 - Peito e Tríceps",
+        exercicios: [
+          { nome: "Supino Inclinado com Barra", series: "4x12", intervalo: "30-60s", img: "imagens/supino-inclinado-barra.gif", link: "https://www.hipertrofia.org/blog/2018/08/11/supino-inclinado/" },
+          { nome: "Supino Inclinado", series: "4x12", intervalo: "30-60s", img: "imagens/supino-inclinado.gif", link: "https://www.hipertrofia.org/blog/2018/08/11/supino-inclinado/" },
+          { nome: "Crucifixo e Peck Deck", series: "4x13", intervalo: "30-60s", img: "imagens/crucifixo-peck.gif", link: "https://www.hipertrofia.org/blog/2025/03/11/crucifixo-ou-peck-deck/" },
+          { nome: "Tríceps Pulley", series: "4x12", intervalo: "30-60s", img: "imagens/triceps-pulley.gif", link: "https://www.hipertrofia.org/blog/?s=Tr%C3%ADceps+Pulley" },
+          { nome: "Tríceps Inverso", series: "4x12", intervalo: "30-60s", img: "imagens/triceps-invertido.gif", link: "https://www.hipertrofia.org/blog/exercicios-de-musculacao/exercicios-para-triceps/" },
+          { nome: "Tríceps Coice", series: "4x12", intervalo: "30-60s", img: "imagens/triceps-coice.gif", link: "https://www.hipertrofia.org/blog/exercicios-de-musculacao/exercicios-para-triceps/" }
+        ]
+      },
+      {
+        nome: "Dia 2 - Pernas",
+        exercicios: [
+          { nome: "Agachamento Peso Corporal", series: "4x12", intervalo: "30-60s", img: "imagens/agachamento.gif" },
+          { nome: "Leg Press 30°", series: "4x12", intervalo: "30-60s", img: "imagens/legpress.gif" },
+          { nome: "Cadeira Extensora", series: "4x12", intervalo: "30-60s", img: "imagens/extensora.gif" },
+          { nome: "Mesa Flexora", series: "4x12", intervalo: "30-60s", img: "imagens/flexora.gif" }
+        ]
+      },
+      {
+        nome: "Dia 3 - Costas, Bíceps e Ombros",
+        exercicios: [
+          { nome: "Puxada Alta Supinada", series: "4x12", intervalo: "30-60s", img: "imagens/puxada.gif" },
+          { nome: "Remada Baixa Triângulo", series: "4x12", intervalo: "30-60s", img: "imagens/remada.gif" },
+          { nome: "Rosca Direta", series: "4x12", intervalo: "30-60s", img: "imagens/rosca.gif" },
+          { nome: "Elevação Lateral", series: "4x12", intervalo: "30-60s", img: "imagens/elevacao_lateral.gif" }
+        ]
+      }
+    ];
 
-  const dayTabs = document.getElementById("dayTabs");
-  const dayContent = document.getElementById("dayContent");
+    const dayTabs = document.getElementById("dayTabs");
+    const dayContent = document.getElementById("dayContent");
 
-  dias.forEach((dia, dIndex) => {
-    const dBtn = document.createElement("button");
-    dBtn.innerText = dia.nome;
-    dBtn.onclick = () => showDay(dIndex);
-    dayTabs.appendChild(dBtn);
+    dias.forEach((dia, dIndex) => {
+      const dBtn = document.createElement("button");
+      dBtn.innerText = dia.nome;
+      dBtn.onclick = () => showDay(dIndex);
+      dayTabs.appendChild(dBtn);
 
-    const wrapper = document.createElement("div");
-    wrapper.style.display = "none";
+      const wrapper = document.createElement("div");
+      wrapper.style.display = "none";
 
-    const tabBtns = document.createElement("div");
-    tabBtns.className = "tab-container";
-    wrapper.appendChild(tabBtns);
+      const tabBtns = document.createElement("div");
+      tabBtns.className = "tab-container";
+      wrapper.appendChild(tabBtns);
 
-    dia.exercicios.forEach((ex, eIndex) => {
-      const btn = document.createElement("button");
-      btn.innerText = `Ex ${eIndex+1}`;
-      btn.onclick = () => showExercise(dIndex, eIndex);
-      tabBtns.appendChild(btn);
+      dia.exercicios.forEach((ex, eIndex) => {
+        const btn = document.createElement("button");
+        btn.innerText = `Ex ${eIndex + 1}`;
+        btn.onclick = () => showExercise(dIndex, eIndex);
+        tabBtns.appendChild(btn);
 
-      const div = document.createElement("div");
-      div.className = "tab-content";
-      div.innerHTML = `
+        const div = document.createElement("div");
+        div.className = "tab-content";
+        div.innerHTML = `
         <h2>${ex.nome}</h2>
 		<a href="${ex.link}" target="_blank">
 		<img src="${ex.img}" alt="${ex.nome}">
@@ -97,46 +187,47 @@
         <div class="exercise-info"><b>Intervalo:</b> ${ex.intervalo}</div>
         <button class="next-btn" onclick="nextExercise(${dIndex}, ${eIndex})">Próximo</button>
       `;
-      wrapper.appendChild(div);
+        wrapper.appendChild(div);
+      });
+
+      dayContent.appendChild(wrapper);
     });
 
-    dayContent.appendChild(wrapper);
-  });
+    function showDay(d) {
+      [...dayContent.children].forEach((c, i) => c.style.display = i === d ? "block" : "none");
+      [...dayTabs.children].forEach((b, i) => b.classList.toggle("active", i === d));
+      showExercise(d, 0);
+    }
 
-  function showDay(d) {
-    [...dayContent.children].forEach((c, i) => c.style.display = i === d ? "block" : "none");
-    [...dayTabs.children].forEach((b, i) => b.classList.toggle("active", i === d));
-    showExercise(d, 0);
-  }
+    function showExercise(d, e) {
+      const wrapper = dayContent.children[d];
+      const contents = wrapper.querySelectorAll(".tab-content");
+      const buttons = wrapper.querySelectorAll(".tab-container button");
+      contents.forEach(c => c.style.display = "none");
+      buttons.forEach(b => b.classList.remove("active"));
+      contents[e].style.display = "block";
+      buttons[e].classList.add("active");
+    }
 
-  function showExercise(d, e) {
-    const wrapper = dayContent.children[d];
-    const contents = wrapper.querySelectorAll(".tab-content");
-    const buttons = wrapper.querySelectorAll(".tab-container button");
-    contents.forEach(c => c.style.display = "none");
-    buttons.forEach(b => b.classList.remove("active"));
-    contents[e].style.display = "block";
-    buttons[e].classList.add("active");
-  }
+    function nextExercise(d, e) {
+      let next = e + 1;
+      const total = dias[d].exercicios.length;
+      if (next >= total) next = 0;
+      showExercise(d, next);
+    }
 
-  function nextExercise(d, e) {
-    let next = e + 1;
-    const total = dias[d].exercicios.length;
-    if(next >= total) next = 0;
-    showExercise(d, next);
-  }
+    // abre Dia 1 por padrão
+    showDay(0);
+  </script>
 
-  // abre Dia 1 por padrão
-  showDay(0);
-</script>
-
-<script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("service-worker.js")
-      .then(() => console.log("Service Worker registrado!"))
-      .catch(err => console.error("Erro no Service Worker:", err));
-  }
-</script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("Service Worker registrado!"))
+        .catch(err => console.error("Erro no Service Worker:", err));
+    }
+  </script>
 
 </body>
+
 </html>

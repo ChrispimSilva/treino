@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treino Feminino Iniciante</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#e91e63">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fce4ec;
+            color: #333;
+        }
+
+        header {
+            background: #d81b60;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .day-tabs {
+            display: flex;
+            justify-content: center;
+            background: #c2185b;
+            flex-wrap: wrap;
+        }
+
+        .day-tabs button {
+            padding: 10px 20px;
+            border: none;
+            margin: 2px;
+            border-radius: 6px;
+            background: #f06292;
+            color: white;
+            cursor: pointer;
+        }
+
+        .day-tabs button.active {
+            background: #fce4ec;
+            color: #c2185b;
+            font-weight: bold;
+        }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            background: #f8bbd0;
+        }
+
+        .tab-container button {
+            padding: 8px 15px;
+            border: none;
+            background: #f48fb1;
+            cursor: pointer;
+            margin: 2px;
+            border-radius: 6px;
+            color: white;
+        }
+
+        .tab-container button.active {
+            background: #ad1457;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            text-align: center;
+            background: white;
+        }
+
+        .tab-content img {
+            max-width: 300px;
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .exercise-info {
+            margin-bottom: 10px;
+        }
+
+        .next-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #880e4f;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 20px;
+            color: #d81b60;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Treino Feminino Iniciante</h1>
+        <p>Full Body A/B (3x na semana)</p>
+    </header>
+
+    <div class="day-tabs" id="dayTabs"></div>
+    <div id="dayContent"></div>
+
+    <a href="index.html" class="back-link">← Voltar para o Treino Principal</a>
+
+    <script>
+        const treinos = [
+            {
+                nome: "Treino A - Full Body",
+                exercicios: [
+                    { nome: "Agachamento Livre", series: "3x8-12", intervalo: "60-90s", img: "imagens/agachamento.gif" },
+                    { nome: "Cadeira Extensora", series: "3x12", intervalo: "60s", img: "imagens/extensora.gif" },
+                    { nome: "Remada Curvada", series: "3x8-12", intervalo: "60-90s", img: "imagens/remada_curvada.gif" },
+                    { nome: "Mesa Flexora", series: "3x12", intervalo: "60s", img: "imagens/flexora.gif" },
+                    { nome: "Rosca Direta", series: "3x10-15", intervalo: "60s", img: "imagens/rosca.gif" },
+                    { nome: "Prancha Abdominal", series: "3x20-30s", intervalo: "60s", img: "imagens/prancha.gif" }
+                ]
+            },
+            {
+                nome: "Treino B - Full Body",
+                exercicios: [
+                    { nome: "Leg Press", series: "3x8-12", intervalo: "60-90s", img: "imagens/legpress.gif" },
+                    { nome: "Puxada Alta", series: "3x8-12", intervalo: "60-90s", img: "imagens/puxada.gif" },
+                    { nome: "Desenvolvimento com Halteres", series: "3x10-12", intervalo: "60-90s", img: "imagens/desenvolvimento_halteres.gif" },
+                    { nome: "Tríceps Testa", series: "3x10-15", intervalo: "60s", img: "imagens/triceps_testa.gif" },
+                    { nome: "Panturrilha em Pé", series: "3x12-15", intervalo: "60s", img: "imagens/panturrilha_em_pe.gif" },
+                    { nome: "Abdominal", series: "3x15-20", intervalo: "60s", img: "imagens/abdominal.gif" }
+                ]
+            }
+        ];
+
+        const dayTabs = document.getElementById("dayTabs");
+        const dayContent = document.getElementById("dayContent");
+
+        treinos.forEach((treino, tIndex) => {
+            const dBtn = document.createElement("button");
+            dBtn.innerText = treino.nome;
+            dBtn.onclick = () => showTreino(tIndex);
+            dayTabs.appendChild(dBtn);
+
+            const wrapper = document.createElement("div");
+            wrapper.style.display = "none";
+
+            const tabBtns = document.createElement("div");
+            tabBtns.className = "tab-container";
+            wrapper.appendChild(tabBtns);
+
+            treino.exercicios.forEach((ex, eIndex) => {
+                const btn = document.createElement("button");
+                btn.innerText = `Ex ${eIndex + 1}`;
+                btn.onclick = () => showExercise(tIndex, eIndex);
+                tabBtns.appendChild(btn);
+
+                const div = document.createElement("div");
+                div.className = "tab-content";
+                div.innerHTML = `
+        <h2>${ex.nome}</h2>
+        <img src="${ex.img}" alt="${ex.nome}">
+        <div class="exercise-info"><b>Séries/Reps:</b> ${ex.series}</div>
+        <div class="exercise-info"><b>Intervalo:</b> ${ex.intervalo}</div>
+        <button class="next-btn" onclick="nextExercise(${tIndex}, ${eIndex})">Próximo</button>
+      `;
+                wrapper.appendChild(div);
+            });
+
+            dayContent.appendChild(wrapper);
+        });
+
+        function showTreino(t) {
+            [...dayContent.children].forEach((c, i) => c.style.display = i === t ? "block" : "none");
+            [...dayTabs.children].forEach((b, i) => b.classList.toggle("active", i === t));
+            showExercise(t, 0);
+        }
+
+        function showExercise(t, e) {
+            const wrapper = dayContent.children[t];
+            const contents = wrapper.querySelectorAll(".tab-content");
+            const buttons = wrapper.querySelectorAll(".tab-container button");
+            contents.forEach(c => c.style.display = "none");
+            buttons.forEach(b => b.classList.remove("active"));
+            contents[e].style.display = "block";
+            buttons[e].classList.add("active");
+        }
+
+        function nextExercise(t, e) {
+            let next = e + 1;
+            const total = treinos[t].exercicios.length;
+            if (next >= total) next = 0;
+            showExercise(t, next);
+        }
+
+        // abre Treino A por padrão
+        showTreino(0);
+    </script>
+
+</body>
+
+</html>
