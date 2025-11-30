@@ -1,0 +1,241 @@
+/* Reset e Base */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+/* Header */
+header {
+    background: #2c3e50;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+/* Navegação de Dias/Treinos */
+.day-tabs {
+    display: flex;
+    justify-content: center;
+    background: #34495e;
+    flex-wrap: wrap;
+}
+
+.day-tabs button {
+    padding: 10px 20px;
+    border: none;
+    margin: 2px;
+    border-radius: 6px;
+    background: #7f8c8d;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.day-tabs button:hover {
+    background: #95a5a6;
+}
+
+.day-tabs button.active {
+    background: #e67e22;
+}
+
+/* Navegação de Exercícios */
+.tab-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: #ecf0f1;
+}
+
+.tab-container button {
+    padding: 8px 15px;
+    border: none;
+    background: #bdc3c7;
+    cursor: pointer;
+    margin: 2px;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.tab-container button:hover {
+    background: #95a5a6;
+}
+
+.tab-container button.active {
+    background: #3498db;
+    color: white;
+}
+
+/* Conteúdo dos Exercícios */
+.tab-content {
+    display: none;
+    padding: 20px;
+    text-align: center;
+    background: white;
+}
+
+.tab-content img {
+    max-width: 300px;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.exercise-info {
+    margin-bottom: 10px;
+}
+
+/* Botões */
+.next-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1em;
+    transition: background 0.3s;
+}
+
+.next-btn:hover {
+    background: #229954;
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin: 20px;
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Cards de Exercício (para páginas estáticas) */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+.exercise-card {
+    background: white;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.exercise-card h2 {
+    color: #e67e22;
+    margin-top: 0;
+}
+
+.exercise-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+/* Media Queries - Responsividade Mobile */
+@media (min-width: 600px) {
+    .next-btn {
+        width: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    header p {
+        font-size: 0.9em;
+    }
+
+    .day-tabs button, 
+    .tab-container button {
+        flex: 1 1 45%;
+        margin: 5px;
+        padding: 12px;
+        font-size: 1em;
+    }
+
+    .tab-content {
+        padding: 15px;
+    }
+
+    .tab-content img {
+        width: 100%;
+        height: auto;
+    }
+
+    .exercise-card {
+        padding: 15px;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+}
+
+/* Variações de Cores para Páginas Específicas */
+.theme-pink header {
+    background: #d81b60;
+}
+
+.theme-pink body {
+    background: #fce4ec;
+}
+
+.theme-pink .day-tabs {
+    background: #c2185b;
+}
+
+.theme-pink .day-tabs button {
+    background: #f06292;
+}
+
+.theme-pink .day-tabs button.active {
+    background: #fce4ec;
+    color: #c2185b;
+}
+
+.theme-pink .tab-container {
+    background: #f8bbd0;
+}
+
+.theme-pink .tab-container button {
+    background: #f48fb1;
+}
+
+.theme-pink .tab-container button.active {
+    background: #ad1457;
+}
+
+.theme-pink .next-btn {
+    background: #880e4f;
+}
+
+.theme-pink .next-btn:hover {
+    background: #6a0f3e;
+}
+
+.theme-pink .back-link {
+    color: #d81b60;
+}
